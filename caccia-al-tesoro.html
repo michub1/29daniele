@@ -52,6 +52,7 @@
     <h1>🎉 Buon compleanno Daniele! 🎉</h1>
     <p>Benvenuto alla tua Caccia al Tesoro dei 29 anni! Rispondi correttamente ai 10 indovinelli per completare la sfida 🎁</p>
 
+    <!-- Questions -->
     <div id="step0" class="step active">
       <p><strong>Indovinello 1:</strong><br>
       Qual è l'unico pianeta del Sistema Solare con un sistema di anelli visibile dalla Terra?</p>
@@ -132,7 +133,7 @@
   </div>
 
   <script>
-    function checkAnswer(step, correct, imageFile = '', message = '') {
+    function checkAnswer(step, correct, message = '') {
       const input = document.getElementById('answer' + step);
       const result = document.getElementById('result' + step);
       const currentStep = document.getElementById('step' + step);
