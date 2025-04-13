@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caccia al Tesoro di Daniele</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #e60000;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .success-message {
+      font-weight: bold;
+      color: green;
+      margin-top: 10px;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Buon compleanno Daniele! 🎉</h1>
+    <p>Benvenuto alla tua Caccia al Tesoro dei 29 anni! Rispondi correttamente ai 10 indovinelli per completare la sfida 🎁</p>
+
+    <div id="step0" class="step active">
+      <p><strong>Indovinello 1:</strong><br>
+      Qual è l'unico pianeta del Sistema Solare con un sistema di anelli visibile dalla Terra?</p>
+      <input type="text" id="answer0">
+      <button onclick="checkAnswer(0, 'saturno', 'Gravità e stile! Saturno è il re degli anelli! 🎯')">Rispondi</button>
+      <p id="result0"></p>
+    </div>
+
+    <div id="step1" class="step">
+      <p><strong>Indovinello 2:</strong><br>Chi ha vinto il campionato di Serie A nella stagione 2003-2004?</p>
+      <input type="text" id="answer1">
+      <button onclick="checkAnswer(1, 'milan', 'Sempre forza rossoneri! ⚽')">Rispondi</button>
+      <p id="result1"></p>
+    </div>
+
+    <div id="step2" class="step">
+      <p><strong>Indovinello 3:</strong><br>In quale regione italiana si trova il comune di Limana?</p>
+      <input type="text" id="answer2">
+      <button onclick="checkAnswer(2, 'veneto', 'Giusto! Limana si trova nel cuore del Veneto! 🗺️')">Rispondi</button>
+      <p id="result2"></p>
+    </div>
+
+    <div id="step3" class="step">
+      <p><strong>Indovinello 4:</strong><br>Qual è il nome del modello compatto della Mercedes?</p>
+      <input type="text" id="answer3">
+      <button onclick="checkAnswer(3, 'classe a', 'Perfetto! La Classe A è l’eleganza compatta della Mercedes! 🚗')">Rispondi</button>
+      <p id="result3"></p>
+    </div>
+
+    <div id="step4" class="step">
+      <p><strong>Indovinello 5:</strong><br>Chi ha vinto il campionato mondiale di Formula 1 nel 2021?</p>
+      <input type="text" id="answer4">
+      <button onclick="checkAnswer(4, 'verstappen', 'Esatto! Verstappen ha conquistato la vetta nel 2021! 🏁')">Rispondi</button>
+      <p id="result4"></p>
+    </div>
+
+    <div id="step5" class="step">
+      <p><strong>Indovinello 6:</strong><br>In che anno è stato fondato il Milan?</p>
+      <input type="text" id="answer5">
+      <button onclick="checkAnswer(5, '1899', 'Storico! Il Milan è nato nel 1899! 🔴⚫')">Rispondi</button>
+      <p id="result5"></p>
+    </div>
+
+    <div id="step6" class="step">
+      <p><strong>Indovinello 7:</strong><br>Quale metallo ha come simbolo chimico "Fe"?</p>
+      <input type="text" id="answer6">
+      <button onclick="checkAnswer(6, 'ferro', 'Giusto! Il ferro tiene duro! 💪')">Rispondi</button>
+      <p id="result6"></p>
+    </div>
+
+    <div id="step7" class="step">
+      <p><strong>Indovinello 8:</strong><br>Chi era l'allenatore del Milan nel 2007 quando vinsero la Champions League?</p>
+      <input type="text" id="answer7">
+      <button onclick="checkAnswer(7, 'ancelotti', 'Leggenda! Ancelotti ci ha portati alla gloria! 🏆')">Rispondi</button>
+      <p id="result7"></p>
+    </div>
+
+    <div id="step8" class="step">
+      <p><strong>Indovinello 9:</strong><br>Qual è il nome dell'auto Mercedes famosa per la sua versatilità tra SUV e coupé?</p>
+      <input type="text" id="answer8">
+      <button onclick="checkAnswer(8, 'gle', 'Potente e versatile: proprio come la GLE! 🚙')">Rispondi</button>
+      <p id="result8"></p>
+    </div>
+
+    <div id="step9" class="step">
+      <p><strong>Indovinello 10:</strong><br>Qual è il circuito automobilistico noto per la curva Eau Rouge?</p>
+      <input type="text" id="answer9">
+      <button onclick="checkAnswer(9, 'spa', 'Adrenalina pura! La curva Eau Rouge è iconica a Spa! 🏎️')">Rispondi</button>
+      <p id="result9"></p>
+    </div>
+
+    <div id="finale" class="step">
+      <h2>🎊 Complimenti Daniele! 🎊</h2>
+      <p>Hai completato la caccia al tesoro! Goditi il tuo giorno speciale! 🥳</p>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer(step, correct, message = '') {
+      const input = document.getElementById('answer' + step);
+      const result = document.getElementById('result' + step);
+      const currentStep = document.getElementById('step' + step);
+      const nextStep = document.getElementById('step' + (step + 1));
+
+      if (!input || !result || !currentStep) return;
+
+      const userAnswer = input.value.trim().toLowerCase();
+      if (userAnswer === correct) {
+        result.innerHTML = `✅ Corretto!<br><span class='success-message'>${message}</span>`;
+        setTimeout(() => {
+          currentStep.classList.remove('active');
+          if (nextStep) {
+            nextStep.classList.add('active');
+          } else {
+            const finale = document.getElementById('finale');
+            if (finale) finale.classList.add('active');
+          }
+        }, 1800);
+      } else {
+        result.textContent = '❌ Riprova!';
+      }
+    }
+  </script>
+</body>
+</html>
