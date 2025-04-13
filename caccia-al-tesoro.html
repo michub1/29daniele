@@ -125,12 +125,14 @@
 
     <div id="finale" class="step">
       <h2>🎊 Complimenti Daniele! 🎊</h2>
-      <p>Hai completato la caccia al tesoro! Goditi il tuo giorno speciale! 🥳</p>
+      <p>Oggi sei on Fire!!! 🔥</p>
+      <p>Per riscattare il tuo premio rispondi alla mail che hai ricevuto con scritto VICTORY!!!</p>
+      <p>Con affetto da: Michael, Gabriele, Taba, Francesca, Matteo, Camilla ❤️</p>
     </div>
   </div>
 
   <script>
-    function checkAnswer(step, correct, message = '') {
+    function checkAnswer(step, correct, imageFile = '', message = '') {
       const input = document.getElementById('answer' + step);
       const result = document.getElementById('result' + step);
       const currentStep = document.getElementById('step' + step);
